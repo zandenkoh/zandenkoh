@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zanden Koh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Existing CSS remains unchanged */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f0f0f;
+            color: #fff;
+            line-height: 1.8;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 77, 109, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem 4rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 15, 15, 1);
+            padding: 1rem 4rem;
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ff4d6d;
+        }
+
+        .nav-links a {
+            margin-left: 3rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff4d6d;
+        }
+
+        section {
+            padding: 8rem 4rem;
+            position: relative;
+            width: 100%;
+        }
+
+        #hero {
+            height: 100vh;
+            background: linear-gradient(45deg, #0f0f0f, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff4d6d, #4d79ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 5rem;
+            background: linear-gradient(45deg, #ff4d6d, #4d79ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+
+        #about {
+            background: #1a1a1a;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+        }
+
+        #projects {
+            background: #0f0f0f;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff4d6d, #4d79ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1rem;
+        }
+
+        #contact {
+            background: #1a1a1a;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 2rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff4d6d;
+            transform: scale(1.2);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #ff4d6d;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #4d79ff;
+            transform: scale(1.05);
+        }
+
+        footer {
+            padding: 4rem;
+            text-align: center;
+            background: #000;
+            font-size: 0.9rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="custom-cursor" id="cursor"></div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ZANDEN</div>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas class="particles" id="particles"></canvas>
+        <div class="hero-content">
+            <h1>I'm Zanden</h1>
+            <p>A young innovator revolutionizing healthcare through AI and STEM</p>
+        </div>
+    </section>
+
+    <section id="about" class="reveal">
+        <h2 class="section-title">Who I Am</h2>
+        <div class="about-content">
+            <div>
+                <h3>My Story</h3>
+                <p>I'm Zanden, a high school student with a relentless passion for science, technology, and making a difference. My journey kicked off at a young age when I started tinkering with computers and coding—my first project was a basic program to explore my interests in STEM. That curiosity has since propelled me into the world of artificial intelligence and biomedical innovation.</p>
+                <p>At 13, I won the Discovery Education 3M Young Scientist Challenge in 2018 with an AI tool that transformed pancreatic cancer treatment. Now, I’m a neuroscience enthusiast aiming to blend medicine and technology to solve some of the world’s toughest challenges.</p>
+                <h3>What Drives Me</h3>
+                <p>I’m fueled by a desire to improve lives through innovation. My dream is to cure pancreatic cancer, and I’m working toward that by combining AI with healthcare solutions. I also love inspiring others, especially young students, to dive into STEM and think big.</p>
+            </div>
+            <div>
+                <h3>Skills & Expertise</h3>
+                <ul class="skills-list">
+                    <li>Artificial Intelligence (Deep Learning)</li>
+                    <li>Python Programming</li>
+                    <li>Biomedical Research</li>
+                    <li>Data Analysis</li>
+                    <li>Public Speaking & Mentorship</li>
+                    <li>Web Development (HTML, CSS, JS)</li>
+                </ul>
+                <h3>Interests</h3>
+                <ul class="skills-list">
+                    <li>Neuroscience</li>
+                    <li>Healthcare Technology</li>
+                    <li>STEM Education</li>
+                    <li>Innovation Challenges</li>
+                </ul>
+            </div>
+        </div>
+        <div class="timeline" style="max-width: 1000px; margin: 4rem auto;">
+            <h3>Milestones</h3>
+            <div class="timeline-item" style="margin-bottom: 2rem;">
+                <p style="color: #ff4d6d; font-weight: 700;">2018</p>
+                <p>Won the 3M Young Scientist Challenge for my Pancreatic Cancer AI tool</p>
+            </div>
+            <div class="timeline-item" style="margin-bottom: 2rem;">
+                <p style="color: #ff4d6d; font-weight: 700;">2019</p>
+                <p>Co-founded the Samyak Science Society to promote STEM</p>
+            </div>
+            <div class="timeline-item" style="margin-bottom: 2rem;">
+                <p style="color: #ff4d6d; font-weight: 700;">2022</p>
+                <p>Earned the Regeneron Young Scientist Award at ISEF</p>
+            </div>
+            <div class="timeline-item">
+                <p style="color: #ff4d6d; font-weight: 700;">2025</p>
+                <p>Building this portfolio and advancing my research in neuroscience</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <h2 class="section-title">My Work</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Pancreatic Cancer Deep Learning System</h3>
+                <p>An AI tool that enhances MRI-guided radiotherapy by accurately locating the pancreas, improving cancer treatment outcomes.</p>
+            </div>
+            <div class="project-card">
+                <h3>The Pancreas Detective</h3>
+                <p>A system to improve gene mutation diagnosis for precision medicine in pancreatic cancer patients.</p>
+            </div>
+            <div class="project-card">
+                <h3>ICOR</h3>
+                <p>An AI-based codon optimization tool that boosts recombinant vaccine production by 236% in E. coli.</p>
+            </div>
+            <div class="project-card">
+                <h3>Samyak Science Initiative</h3>
+                <p>A nonprofit effort to inspire young minds in science and technology through workshops and outreach.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <h2 class="section-title">Let's Collaborate</h2>
+        <p>Have an idea? Want to work together? Drop me a line!</p>
+        <p>Email: zanden@example.com</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <a href="mailto:zanden@example.com" class="contact-btn">Get in Touch</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Zanden. Designed & Developed with Passion.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Particles
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 77, 109, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 100; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        init();
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.2) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                    particlesArray.push(new Particle());
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Scroll reveal
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+
+</html>
