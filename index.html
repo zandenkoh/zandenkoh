@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zanden Koh</title>
+    <title>Zanden - Creative Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Existing CSS remains unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -65,6 +64,11 @@
             color: #ff4d6d;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             margin-left: 3rem;
             text-decoration: none;
@@ -72,12 +76,21 @@
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: relative;
             transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
             color: #ff4d6d;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1001;
         }
 
         section {
@@ -104,13 +117,8 @@
             pointer-events: none;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
         .hero-content h1 {
-            font-size: 5.5rem;
+            font-size: 4rem;
             font-weight: 900;
             background: linear-gradient(45deg, #ff4d6d, #4d79ff);
             -webkit-background-clip: text;
@@ -119,7 +127,7 @@
         }
 
         .hero-content p {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 300;
             max-width: 800px;
             margin: 0 auto;
@@ -165,15 +173,15 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             max-width: 1600px;
             margin: 0 auto;
         }
 
         .project-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 20px;
             transition: all 0.4s ease;
             position: relative;
@@ -245,7 +253,7 @@
         }
 
         footer {
-            padding: 4rem;
+            padding: 4rem 2rem;
             text-align: center;
             background: #000;
             font-size: 0.9rem;
@@ -262,17 +270,96 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 3rem;
+        /* Enhanced Responsiveness */
+        @media (max-width: 1024px) {
+            section {
+                padding: 6rem 2rem;
             }
-
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
             .hero-content p {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 2.8rem;
+                margin-bottom: 3rem;
+            }
+            .about-content {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+            nav.scrolled {
+                padding: 0.8rem 2rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(15, 15, 15, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                margin: 2rem 0;
                 font-size: 1.2rem;
             }
-
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
             .about-content {
                 grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 4rem 1rem;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            .contact-btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -283,6 +370,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo">ZANDEN</div>
+            <button class="menu-btn" aria-label="Toggle Menu">☰</button>
             <div class="nav-links">
                 <a href="#hero">Home</a>
                 <a href="#about">About</a>
@@ -397,6 +485,9 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                // Close menu on link click (mobile)
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.classList.remove('active');
             });
         });
 
@@ -411,6 +502,14 @@
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
 
         // Particles
