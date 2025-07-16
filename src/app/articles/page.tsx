@@ -3,6 +3,7 @@ import SimpleLayout from "@/components/SimpleLayout";
 import { ArticleWithSlug, getAllArticles } from "@/lib/article";
 import { formatDate } from "@/lib/formateDate";
 import React from "react";
+import { type Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blogs | Zanden Koh",
