@@ -1,0 +1,80 @@
+import ArticleLayout from "@/components/ArticleLayout";
+import agency from "./agency.png";
+
+export const article = {
+  author: "Adam Wathan",
+  date: "2025-07-16",
+  title: "The Importance of Agency",
+  description:
+    "Agency is the capacity to act. Agency is somewhat related to autonomy, but it is different. Autonomy is independence—the freedom to act without external control or influence. Autonomy does not necessarily imply agency—one could have independence without the capacity to act. When we lack agency, we lack the ability to act.",
+};
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default (props) => <ArticleLayout article={article} {...props} />;
+
+<Image src={agency} alt="" />
+
+Dan Pink's [Drive](http://www.danpink.com/books/drive/) is one of my favourite books. I also really like his [RSA talk](https://www.youtube.com/watch?v=_mG-hhWL_ug) on the same subject. Pink argues that people are happy, engaged, productive, and creative when they are intrinsically motivated, as opposed to being motivated extrinsically by money, fear, punishment, or shame. He argues that intrinsic motivation derives from three essential elements: autonomy, mastery, and purpose. Autonomy is our desire to be self-directed; mastery, the urge to improve our skills; and purpose, our desire to contribute to something meaningful.
+
+Reading Drive made me appreciate that mastery, autonomy, and purpose are the essential elements for me to derive satisfaction from my work. It made me explicitly aware of these elements and provided great insight into the work that I find rewarding and enjoyable, compared to the work that I find less interesting or frustrating. There is, however, something else that is required to ultimately achieve mastery, autonomy, and purpose, something that is not always considered: agency.
+
+Agency is the capacity to act. Agency is somewhat related to autonomy, but it is different. Autonomy is independence—the freedom to act without external control or influence. Autonomy does not necessarily imply agency—one could have independence without the capacity to act. When we lack agency, we lack the ability to act.
+
+Lacking agency can be somewhat depressing. It is one of the reasons that people become disillusioned by troubling political events, or tragic news stories, especially from far-off places—they cannot necessarily act in a manner that will have any immediate or long-term impact.
+
+If key contributors to a team lack agency, this is a situation that must be addressed with urgency, or, ultimately, these key contributors will become frustrated, marginalized, and unproductive. A lack of agency can also destroy a team, or prevent a team from ever forming in the first place, with individuals acting autonomously, perhaps even developing some suboptimal mastery, but without the connection required to establish meaningful purpose.
+
+In this article, I will describe three situations in which people lack agency. All three situations result in paralysis. We lack agency when we fear making changes, when we lack jurisdiction, and when we lack ownership.
+
+
+## Fear
+
+We lack agency when we fear changing established systems, because we do not understand them, or we are afraid that changing them might lead to negative consequences. For example, making a change to a critical production system, or a system that has years of legacy.
+
+Imagine diving in and making a change at the core of the Linux or Windows kernel. People think, "This code is generally working fine right now, and so many people depend on it. I do not understand all of it, and I do not want to be the one to screw it up by making changes!"
+
+We become paralyzed. We avoid making any change. Instead, we stare at the program and imagine what might go wrong, playing out contingencies in our mind for hours. If we do eventually make a change, it will necessarily be cosmetic or peripheral, never a change to the core of the application, treating the core as a black box, never to be altered.
+
+We may also feel that we we need to understand everything about the system before making a change, studying languages, frameworks, and patterns, striving to feel as proficient as our more senior colleagues that have worked with this software for years. In reality, our colleagues who we view as so proficient may not feel this way themselves. And even if they do, it has probably come from years of making changes, learning from mistakes, and getting better.
+
+A software system cannot be maintained in this manner over the long-term. If all we do is add to or modify the periphery, the value of the software system will diminish over time, with the structure and function eventually becoming incoherent. To keep a software system healthy and relevant, we must tend to, and evolve, the core of the system. One of the most important aspects of becoming a professional is to learn how to mitigate risks such that you can continue to evolve systems, aggressively, over time.
+
+If paralysis from fear often happens to more junior members of the team, you need to ask yourself if the system has the necessary safeguards in place—unit tests, systems tests, static analysis, code review, instrumentation and monitoring of production systems—to support a person who is not intimately familiar with the system in being adventurous in learning and modifying it. A person should feel safe and supported in experimenting with the system.
+
+You should also ask yourself if the team has a sufficient support system—through things like mentoring, training, and pair programming—such that a person feels comfortable making changes. Sometimes there is nothing better than seeing an experienced member of the team tearing apart a core module, with abandon, to teach you that the code is not sacred and that you are free to make radical modifications.
+
+Do not fear making changes until you have reached the point where you feel that you understand everything. Use the scientific method—form a hypothesis, make a change, see what happens. It is not as if the change that you just made has to be deployed to production, or even committed to source control. Even if it is, it can always be reverted. Experiment and learn. Rinse and repeat.
+
+## Jurisdiction
+
+Another way that a person becomes afraid to make changes is when they lack jurisdiction. A module or service might "belong to", or be "owned by", someone else. This leads to a situation where someone wants to act—they want to contribute, they want to do the right thing—but they resist out of respect for, or fear of, another person. This also is not a sustainable situation.
+
+This is one reason why I think software systems should be owned by teams, rather than by individuals. Certainly individuals will gravitate to areas of interest and aptitude. Some people will naturally enjoy and excel at developing systems tests, or tackling performance problems, or attending to security concerns, but the system as a whole must be owned by the team, and the entire team must feel agency to modify, adapt, or extend any part of the system.
+
+If someone is developing mastery, has autonomy, and identifies with their purpose but they lack agency because a module is "owned by" someone else, they will eventually find something else to work on. At a minimum, this is a lost opportunity to bring more ideas and perspectives to the problem at hand, but it will also seriously compromise overall productivity and will certainly jeopardize the formation of a high-functioning team.
+
+## Ownership
+
+Finally, a person lacks agency when we carelessly take ownership of it from them. This most commonly happens when a person in a position of authority—a manager, a team lead, a more senior engineer—claims agency from another person. This is perhaps best illustrated by an example.
+
+Improving the performance of software systems is something that I find extremely rewarding. It is something that I have always been drawn to. For a couple of years, I made a living as a technical lead focused on improving the performance and scalability of a time-series infrastructure platform, and it was some of the most rewarding work that I have ever done.
+
+Now that I manage a team, when we encounter performance or scalability limitations, it is very tempting for me to jump in and work on these problems myself, since they are so interesting and rewarding to me. Based on my experience, sometimes I may even be able to get to the bottom of a pressing problem faster than a less experienced person on my team. Working on performance or scalability improvements can also be high-profile work. There is nothing like showing up to a meeting and reporting to your colleagues that you just improved the scalability of the platform by an order of magnitude. The same can be said for hunting down, understanding, and addressing the most challenging bugs affecting a production system.
+
+What happens if I jump in and own the problem, however, is that I claim agency from another person. I might feel that I am leading by example, showing a less experienced person how to think logically, experiment, and learn, or the problem might be deemed extremely urgent and I feel that I can solve it faster. However, the long-term impact of claiming agency is that the person will just wait to see what I want to do next. They will follow my line of thinking, passively, rather than participating actively with their own line of thinking. They are along for the ride, rather than contributing their own perspectives and energy, expanding their experience and intuition in the process. The net, long-term effect of claiming agency from someone else will always be negative, not positive.
+
+If you are in a position of leadership, it is also worth noting that if we change direction or priorities frequently, we will end up creating the same effect. A person may be working toward mastery, autonomy, and purpose, but if goals keep shifting like sand, we will erode agency and diminish the person's capacity to act. People will again end up being passive, rather than active participants.
+
+We need to resist claiming agency from other people, especially when we are in a position of trust or authority. At the same time, we need to provide guidance, feedback, and mentoring. This can be a tough balance to strike. For me, the fine line is between actively guiding the work and participating in a shared journey. I think the most effective approach is to work on a problem together, sitting side-by-side, and then, after you get to the bottom of the problem, step back and let the other person own the resolution, communicating the result to others. Basically, the goal is to teach others how to fish, without actually catching any fish yourself.
+
+
+## Mastery, Autonomy, Purpose, Agency
+
+I believe that mastery, autonomy, and purpose are they key elements to intrinsic motivation and deriving meaning and satisfaction from our work. But do not overlook agency. Without agency, one cannot act. We become paralyzed through fear, lack of jurisdiction, or the necessary ownership. Without agency, we cannot develop mastery, autonomy, or purpose.
+
+I was very lucky early in my career to regularly discuss systems design problems and pair program with an architect and original authour of the infrastructure platform that I worked on. He is one of the most creative and abstract thinkers that I have ever worked with. He taught me that the entire system was owned by the team, not individuals, and that we were free, even encouraged, to make changes to core components of the platform, in order to keep it healthy, relevant, and evolving. He regularly let me, and others that he mentored, run with tasks that he could have completed in less time. Ultimately, the team, the system, and the individuals, were much better for it.
+
+The next time that you think someone lacks urgency, focus, or initiative, ask yourself instead, "Do they lack agency?" If they do, take the necessary steps to make them feel safe making changes, expand their jurisdiction, and make sure that you are not carelessly claiming agency from them.

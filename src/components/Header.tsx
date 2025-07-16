@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { Fragment, useEffect, useState } from "react";
-import profile from "@/img/profile.jpg";
+import profile from "@/img/logos/zeta.svg";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { IoCloseCircleOutline, IoSunnyOutline } from "react-icons/io5";
@@ -24,7 +24,7 @@ const ThemeToggle = () => {
     <button
       type="button"
       aria-label={mounted ? `Switch to ${otherTheme} theme` : "Toggle theme"}
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      className="hidden group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={() => setTheme(otherTheme)}
     >
       <IoSunnyOutline className="h-6 w-6 stroke-teal-500 transition group-hover:stroke-teal-700 dark:hidden" />
@@ -64,10 +64,10 @@ const DesktopNavigation = (props: React.ComponentPropsWithRef<"nav">) => {
   return (
     <nav {...props}>
       <ul className="flex rounded-md bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+        <NavItem href="/">Home</NavItem>
         <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
+        <NavItem href="/articles">Blog</NavItem>
         <NavItem href="/projects">Projects</NavItem>
-        <NavItem href="/speaking">Speaking</NavItem>
         <NavItem href="/uses">Uses</NavItem>
       </ul>
     </nav>
@@ -139,12 +139,12 @@ const MobileNavigation = (
             <nav className="mt-6">
               <ul className="-my-2 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">About</MobileNavItem>
-                <MobileNavItem href="/articles">Articles</MobileNavItem>
+                <MobileNavItem href="/articles">Blog</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 <MobileNavItem href="/speaking">Speaking</MobileNavItem>
                 <MobileNavItem href="/uses">Uses</MobileNavItem>
               </ul>
-              <button className="text-teal-500 w-full py-2 rounded-md dark:bg-black text-sm uppercase border border-teal-800 hover:text-teal-600 dark:hover:text-teal-200 hover:border-teal-700 duration-300 mt-6">
+              <button className="hidden text-teal-500 w-full py-2 rounded-md dark:bg-black text-sm uppercase border border-teal-800 hover:text-teal-600 dark:hover:text-teal-200 hover:border-teal-700 duration-300 mt-6">
                 Login
               </button>
             </nav>
@@ -170,7 +170,7 @@ const Header = () => {
         <DesktopNavigation className="pointer-events-auto hidden md:block" />
       </div>
       <div className="flex items-center gap-5">
-        <button className="hidden md:inline-flex text-teal-500 px-8 py-2 rounded-full dark:bg-black text-sm uppercase border border-teal-800 hover:text-teal-800 dark:hover:text-teal-200 hover:border-teal-700 duration-300">
+        <button className="hidden md:hidden text-teal-500 px-8 py-2 rounded-full dark:bg-black text-sm uppercase border border-teal-800 hover:text-teal-800 dark:hover:text-teal-200 hover:border-teal-700 duration-300">
           Login
         </button>
         {/* MobileNavigation */}

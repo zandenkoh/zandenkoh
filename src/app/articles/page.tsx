@@ -4,6 +4,11 @@ import { ArticleWithSlug, getAllArticles } from "@/lib/article";
 import { formatDate } from "@/lib/formateDate";
 import React from "react";
 
+export const metadata: Metadata = {
+  title: "Blogs | Zanden Koh",
+  description: "My musings.",
+};
+
 const Article = ({ article }: { article: ArticleWithSlug }) => {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">

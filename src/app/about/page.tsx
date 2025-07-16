@@ -3,6 +3,11 @@ import React from "react";
 import portraitImage from "@/img/portrait.jpg";
 import Image from "next/image";
 
+export const metadata: Metadata = {
+  title: "About me | Zanden Koh",
+  description: "About Zanden Koh.",
+};
+
 const AboutPage = () => {
   return (
     <Container className="mt-16 sm:mt-32">
@@ -19,8 +24,7 @@ const AboutPage = () => {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam,
-            soluta!
+            About me
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>

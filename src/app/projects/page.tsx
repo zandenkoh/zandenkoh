@@ -5,6 +5,7 @@ import logoCosmos from "@/img/logos/cosmos.svg";
 import logoHelioStream from "@/img/logos/helio-stream.svg";
 import logoOpenShuttle from "@/img/logos/open-shuttle.svg";
 import logoPlanetaria from "@/img/logos/planetaria.svg";
+import logoZeta from "@/img/logos/zeta.svg";
 import { type Metadata } from "next";
 import { Card } from "@/components/Card";
 import Image from "next/image";
@@ -18,18 +19,18 @@ export const metadata: Metadata = {
 const ProjectPage = () => {
   const projects = [
     {
-      name: "Planetaria",
+      name: "ZLabs",
       description:
-        "Creating technology to empower civilians to explore space on their own terms.",
+        "Creating technology to empower everyone to explore space on their own terms.",
       link: { href: "http://planetaria.tech", label: "planetaria.tech" },
       logo: logoPlanetaria,
     },
     {
-      name: "Animaginary",
+      name: "Zeta AI",
       description:
-        "High performance web animation library, hand-written in optimized WASM.",
-      link: { href: "#", label: "github.com" },
-      logo: logoAnimaginary,
+        "A free AI assistant designed by ZLabs to maximize truth and objectivity. Zeta offers real-time search, image generation, trend analysis, and more",
+      link: { href: "https://zeta-by-zlabs.vercel.app/", label: "zeta.com" },
+      logo: logoZeta,
     },
     {
       name: "HelioStream",
