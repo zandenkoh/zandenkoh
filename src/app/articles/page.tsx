@@ -40,7 +40,7 @@ const Article = ({ article }: { article: ArticleWithSlug }) => {
 };
 
 const AriclePage = async () => {
-  const articles = await getAllArticles();
+  const articles: ArticleWithSlug[] = await getAllArticles();
   return (
     <SimpleLayout
       title="Writing on software design, company building, and the aerospace industry."
