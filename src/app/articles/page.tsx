@@ -39,7 +39,7 @@ const Article = ({ article }: { article: ArticleWithSlug }) => {
   );
 };
 
-const AriclePage = async () => {
+const ArticlePage = async () => {
   const articles: ArticleWithSlug[] = await getAllArticles();
   return (
     <SimpleLayout
@@ -48,7 +48,7 @@ const AriclePage = async () => {
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">
-          {articles.map((article) => (
+          {articles.map((article: ArticleWithSlug) => (
             <Article key={article.slug} article={article} />
           ))}
         </div>
@@ -57,4 +57,4 @@ const AriclePage = async () => {
   );
 };
 
-export default AriclePage;
+export default ArticlePage;
