@@ -1,7 +1,10 @@
-import { MDXComponents } from '@mdx-js/react';
-import Image, { type ImageProps } from "next/image";
+import { useMDXComponents as originalUseMDXComponents } from '@mdx-js/react';
+import Image, { type ImageProps } from 'next/image';
 
-export function useMDXComponents(components: MDXComponents) {
+// Define a type for the components object
+type MDXComponents = Record<string, React.ComponentType<any>>;
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     Image: (props: ImageProps) => <Image {...props} />,
