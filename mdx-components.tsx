@@ -1,4 +1,4 @@
-import {MDXComponents} from 'mdx/types.js'
+import { MDXComponents } from '@mdx-js/react';
 import Image, { type ImageProps } from "next/image";
 
 export function useMDXComponents(components: MDXComponents) {
